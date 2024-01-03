@@ -1,0 +1,30 @@
+._join {
+    
+    .agree {
+        margin-top: 30px; font-size: 14px;
+        .cont {
+            border: 1px solid #ddd; border-radius: 5px; padding: 10px 2.5%; box-sizing: border-box; word-break: keep-all;
+        }
+        label {
+            margin-top: 15px; display: inline-block;
+        }
+    }
+
+    .icon-input {
+        margin-top: 55px; font-size: 14px;
+        .img {
+            width: 50px; background: #000; border-radius: 1000px;
+            &::after {
+                content: ''; display: block; padding-bottom: 100%;
+            }
+        }
+        p {
+            margin-top: 5px;
+        }
+    }
+
+    button {
+        padding: 0; margin: 30px auto 0; width: 150px; height: 30px; background: #000; color: #fff; border: 0; display: block; font-family: "Pretendard"; cursor: pointer;
+    }
+
+}

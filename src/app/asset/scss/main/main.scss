@@ -1,0 +1,78 @@
+/* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ Layout ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
+
+.layout {
+    height: 100%; position: relative;
+
+    .overflow {
+        overflow-y: auto; box-sizing: border-box; position: absolute; top: 0; left: 0; width: 100%; height: 100%;  padding: 25px 0; 
+    }
+
+    .feed {
+
+        li {
+            + li {
+                margin-top: 50px;
+            }
+        }
+
+        .user {
+            display: flex; align-items: center; padding: 0 2.5%;
+            .icon {
+                width: 35px; background: #000; border-radius: 10000px; margin-right: 10px;
+                &::after {
+                    display: block; padding-bottom: 100%; content: '';
+                }
+            }
+        }
+
+        .img {
+            margin-top: 15px; position: relative;
+            &::after {
+                content: ''; display: block; padding-bottom: 100%;
+            }
+
+            .heart {
+
+                position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; color: red; display: flex; align-items: center; justify-content: center; font-size: 55px;
+
+                svg {
+                    opacity: 0;
+                }
+    
+            }
+
+        }
+
+        .content {
+            padding: 20px 2.5%;
+
+            .like {
+                font-size: 12px;
+            }
+
+            .desc {
+                font-size: 14px;
+                p {
+                    margin-top: 10px;
+                    span {
+                        font-size: 16px; font-weight: 500; margin-right: 10px;
+                    }
+                }
+                .date {
+                    margin-top: 5px;
+                }
+            }
+
+        }
+
+    }
+
+}
+
+// 작성 버튼
+.write-fixed {
+    width: 100%; background: #fff; color: #000; text-align: center; font-weight: 500; font-size: 14px; height: 50px; cursor: pointer; flex: 0 0 auto; position: relative;
+    a,button {
+        all: unset; width: 100%; height: 100%; position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+    }
+}

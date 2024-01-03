@@ -1,0 +1,38 @@
+._write {
+
+    padding: 0 2.5%; box-sizing: border-box;
+    
+    .h1 {
+        font-size: 24px; text-align: center;
+    }
+
+    .file-img {
+        margin-top: 35px;
+    }
+
+    .slide {
+        margin-top: 25px;
+
+        .img {
+            cursor: pointer; background-repeat: no-repeat; background-position: center; background-size: cover;
+            &::after {
+                content: ''; display: block; padding-bottom: 100%;
+            }
+        }
+
+    }
+
+    .text {
+        margin-top: 35px;
+
+        p {
+            font-weight: 500;
+        }
+
+        textarea {
+            width: 100%; resize: none; border: 1px solid #ddd; margin-top: 10px; border-radius: 5px; box-sizing: border-box; outline: 0; padding: 1em; height: 150px; 
+        }
+        
+    }
+
+}

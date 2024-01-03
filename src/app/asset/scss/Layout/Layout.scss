@@ -1,0 +1,67 @@
+/* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ Header ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
+.header {
+    height: 55px; background: #fff; color: #000; padding: 0 2.5%; display: flex; align-items: center; justify-content: space-between; font-size: 12px; flex: 0 0 auto;
+
+    .logo {
+        a {
+            display: inline-flex; align-items: center; vertical-align: middle;
+        }
+
+        img {
+            margin-right: 10px; filter: invert(1);
+        }
+    }
+
+    .route {
+        font-size: 14px; display: flex; align-items: center;
+
+        .icon {
+            width: 20px; border-radius: 1000px; background: #000; margin-right: 10px;
+            &::after {
+                content: ''; display: block; padding-bottom: 100%;
+            }
+        }
+
+        a,
+        button {
+            all: unset;
+            + a,
+            + button {
+                margin-left: 5px;
+            }
+        }
+
+    }
+
+}
+
+
+/* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ Footer ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
+.footer {
+    background: #111; color: #fff; padding: 25px 2.5%; font-size: 12px; line-height: 1.25; word-break: keep-all; flex: 0 0 auto;
+
+    .top {
+        font-size: em(24,14);
+    }
+
+    .p {
+        margin-top: em(10,14);
+
+        span {
+            display: inline-flex; align-items: center; vertical-align: middle; color: slateblue;
+            svg {
+                margin-right: 5px;
+            }
+        }
+
+    }
+
+    .copy {
+        padding-top: 10px; margin-top: 10px; border-top: 1px solid #ffffff51;
+    }
+
+    @media screen and (max-width:480px) {
+        font-size: 12px;
+    }
+
+}
