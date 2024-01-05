@@ -26,7 +26,7 @@
         }
 
         .img {
-            margin-top: 15px; position: relative;
+            margin-top: 15px; position: relative; background-repeat: no-repeat; background-position: center; background-size: cover;
             &::after {
                 content: ''; display: block; padding-bottom: 100%;
             }
@@ -47,7 +47,8 @@
             padding: 20px 2.5%;
 
             .like {
-                font-size: 12px;
+                font-size: 12px; display: inline-flex; align-items: center;
+                svg {display: inline-block; margin-right: 5px; color: red;}
             }
 
             .desc {

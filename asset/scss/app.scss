@@ -1,4 +1,7 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+// pretendard
+
+@import url("../../asset/css/CSSGram.css");
 
 * {
     margin: 0; padding: 0;
@@ -39,7 +42,7 @@ img {
 
 ._main {
 
-    height: 100%; display: flex; width: 95%; max-width: 460px; margin: 0 auto; flex-direction: column; position: relative; border: 1px solid #ccc; border-top: 0; border-bottom: 0;
+    height: 100%; display: flex; width: 95%; max-width: 460px; margin: 0 auto; flex-direction: column; position: relative; border: 1px solid #eee; border-top: 0; border-bottom: 0;
 
 }
 
@@ -49,3 +52,4 @@ img {
 @import "./main/main.scss";
 @import "./Layout/Layout.scss";
 @import "./Write/Write.scss";
+@import "./Mypage/Mypage.scss";

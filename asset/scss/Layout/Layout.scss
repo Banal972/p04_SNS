@@ -1,6 +1,6 @@
 /* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ Header ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
 .header {
-    height: 55px; background: #fff; color: #000; padding: 0 2.5%; display: flex; align-items: center; justify-content: space-between; font-size: 12px; flex: 0 0 auto;
+    height: 55px; background: #fff; color: #000; padding: 0 2.5%; display: flex; align-items: center; justify-content: center; font-size: 12px; flex: 0 0 auto;
 
     .logo {
         a {
@@ -24,7 +24,7 @@
 
         a,
         button {
-            all: unset;
+            all: unset; cursor: pointer;
             + a,
             + button {
                 margin-left: 5px;
@@ -33,6 +33,24 @@
 
     }
 
+}
+
+/* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ NavBar ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
+.nav-bar {
+    display: flex; height: 50px;
+    li {
+        flex: 1; font-size: 20px; position: relative;
+        a {
+            position: absolute; left: 0; top: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+        }
+
+        + li {
+            &::before {
+                position: absolute; left: 0; top: 50%; transform: translateY(-50%); height: 50%; width: 2px; background: #ccc; content: '';
+            }
+        }
+
+    }
 }
 
 

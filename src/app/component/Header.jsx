@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { authOptions } from '../../../pages/api/auth/[...nextauth]';
 import { getServerSession } from 'next-auth';
 import Login from '../../../client/header/Login';
+import Right from '../../../client/header/Right';
 
 export default async function Header() {
 
@@ -10,13 +11,16 @@ export default async function Header() {
   return (
 
     <header className="header">
+
       <div className="logo">
-        <Link href='/'> <img src='/logo.svg' width={20}></img> SNS </Link>
+        <Link href='/'> <img src='/logo.svg' width={20}></img> SNS</Link>
       </div>
-      <div className="route">
+
+      {/* <div className="route">
         <Login session={session}/>
-        {/* <Link href='/user/mypage'>마이페이지</Link> */}
-      </div>
+        <Right/>
+      </div> */}
+      
     </header>
 
   );

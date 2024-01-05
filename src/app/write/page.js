@@ -2,39 +2,157 @@
 
 import { Swiper, SwiperSlide } from "swiper/react"
 import 'swiper/css';
+import { useRef, useState } from "react";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 export default function Write(){
+
+    const router = useRouter();
+
+    const filter = [
+        '_1977','aden',
+        'brannan','brooklyn',
+        'clarendon','earlybird',
+        'gingham','hudson',
+        'inkwell','kelvin',
+        'lark','lofi',
+        'maven','mayfair',
+        'moon','nashville',
+        'perpetua','reyes',
+        'rise','slumber',
+        'stinson','toaster',
+        'valencia','walden',
+        'willow','xpro2'
+    ]
+
+    // ref
+    const fileRef = useRef(null);
+    
+    // state
+    const [file,setFile] = useState(null);
+    const [img,setImg] = useState('');
+    
+    // 필터
+    const [changeFilter,setChangeFilter] = useState('');
+    const filterHandler = (e)=>{
+        setChangeFilter(e);
+    }
+
+    const onSubmit = (e)=>{
+        e.preventDefault();
+
+        const content = e.target.content
+
+        if(!file){
+            alert('사진을 업로드 해주세요');
+            return fileRef.current.click();
+        }
+
+        if(content.value.length > 200){
+            alert('200자 이상 입력할수 없습니다.');
+            return content.focus();
+        }
+
+        const formData = new FormData();
+        formData.append("content",content.value);
+        formData.append("file",file);
+        formData.append('filter',changeFilter);
+
+        /* Array.from(file).forEach(e=>{
+            formData.append("file",e); 
+        }) */
+
+        axios.post('/api/post/write',formData,{
+            headers : {
+                'Content-Type': 'multipart/form-data',
+            }
+        })
+        .then(({data})=>{
+            if(data.suc){
+                alert(data.msg);
+                router.push('/');
+            }
+        })
+    }
+
     return (
-        <div className="_write">
+        <form 
+            onSubmit={(e)=>onSubmit(e)}
+        >
+            <div className="_write">
 
-            <h1 className="h1">새 게시물</h1>
+                <input 
+                    ref={fileRef} 
+                    type="file" 
+                    style={{display : 'none'}}
+                    accept="image/*"
+                    onChange={(e)=>{
+                        const file = e.target.files[0];
+                        const imgBlob = URL.createObjectURL(file);
+                        setFile(file);
+                        setImg(imgBlob);
+                    }}
+                />
 
-            <div className="file-img">
-                <img src="https://placehold.co/600x400" alt="" />
-            </div>
-  
-            <Swiper 
-                className="slide"
-                slidesPerView={3.5}
-                spaceBetween={10}
-            >
                 {
-                    [0,1,2,3,4,5,6,7,8,9,10].map((e)=>(
-                        <SwiperSlide key={e}>
-                            <div 
-                                className="img" 
-                                style={{backgroundImage : "url(https://placehold.co/600x400)"}}
-                            />
-                        </SwiperSlide>
-                    ))
+                    <div 
+                        className={
+                            img ?
+                            `bx-img file-img ${changeFilter}`
+                            : "bx-img notImg"
+                        }
+                        onClick={()=>{
+                            fileRef.current.click();
+                        }}
+                    >
+                        {
+                            img ?
+                            <img src={img} alt="" />
+                            :
+                            <p>클릭해서 사진을 업로드 해주세요</p>
+                        }
+                    </div>
                 }
-            </Swiper>
 
-            <div className="text">
-                <p>본문 내용</p>
-                <textarea name="" id="" cols="30" rows="10" placeholder="본문 내용을 적어주세요"></textarea>
+                {
+                    img &&
+                    <Swiper 
+                        className="slide"
+                        slidesPerView={3.5}
+                        spaceBetween={10}
+                    >
+                        <SwiperSlide>
+                            <div className='imgbox' onClick={()=>filterHandler("")}>
+                                <div 
+                                    className={`img`} 
+                                    style={{backgroundImage : `url(${img})`}}
+                                ></div>
+                            </div>
+                        </SwiperSlide>
+                        {
+                            filter.map((e,i)=>(
+                                <SwiperSlide key={i}>
+                                    <div className='imgbox' onClick={()=>filterHandler(e)}>
+                                        <div 
+                                            className={`img ${e}`} 
+                                            style={{backgroundImage : `url(${img})`}}
+                                        ></div>
+                                    </div>
+                                </SwiperSlide>
+                            ))
+                        }
+                    </Swiper>
+                }
+
+                <div className="text">
+                    <p>내용</p>
+                    <textarea name="content" placeholder="내용을 적어주세요" maxLength={200}></textarea>
+                </div>
+
+                <button type="submit" className="submit">등록</button>
+
             </div>
-
-        </div>
+        </form>
     )
 }

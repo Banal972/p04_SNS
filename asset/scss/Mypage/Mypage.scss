@@ -1,0 +1,64 @@
+.mypage {
+    padding: 0 5%; box-sizing: border-box; font-size: 14px;
+
+    .profile {
+        display: flex;
+        .lbx {
+            flex: 0 0 auto;
+
+            .user-img {
+                border-radius: 1000px; background-repeat: no-repeat; background-position: center; background-size: cover; border: 1px solid #ddd; box-sizing: border-box;
+                &::after {
+                    content: ''; display: block; padding-bottom: 100%;
+                }
+            }
+
+            button {
+                all: unset; margin-top: 15px; background: #000; color: #fff; padding: 0.5em 1em; font-size: 12px; cursor: pointer; border-radius: 2.5px; box-sizing: border-box;
+                display: block;
+            }
+
+            .logout {
+                width: 100%; background: red; text-align: center;
+            }
+
+        }
+
+        .rbx {
+            margin-left: 20px; flex: 1;
+
+            .input-box {
+                + .input-box {
+                    margin-top: 15px;
+                }
+                label {
+                    display: block;
+                }
+                input,
+                textarea {
+                    width: 100%; margin-top: 5px; outline: none;
+                }
+
+                input {
+                    height: 25px;
+                }
+                textarea {
+                    resize:none; border: 1px solid #ddd; padding: 0.5em; box-sizing: border-box; height: 75px;
+                }
+
+            }
+
+        }
+
+    }
+
+
+    .feed-name {
+        margin-top: 50px;
+    }
+
+    .feed {
+        display: grid; border: 1px solid #ddd; margin-top: 15px;
+    }
+
+}

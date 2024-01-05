@@ -2,10 +2,13 @@
 import axios from "axios";
 import gsap from "gsap";
 import moment from "moment/moment";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaHeart } from "react-icons/fa";
 
 export default function Post({e,session}) {
+
+    const router = useRouter();
 
     const [like,setLike] = useState(e.like);
 
@@ -43,6 +46,7 @@ export default function Post({e,session}) {
                 }
 
                 setLike(data.like); // 좋아요 바꾸기
+                router.refresh();
  
             }
         })
@@ -61,15 +65,19 @@ export default function Post({e,session}) {
             {e.user_id}
         </div>
         
-        <div className="img" style={{background:'#000'}}>
+        <div className="img" style={
+            e.imgURL ?
+            {backgroundImage:`url(${e.imgURL})`}
+            : {background : "#000"}
+        }>
             <div className="heart">
-                <FaHeart />
+                <FaHeart/>
             </div>
         </div>
         
         <div className="content">
             <div className="like">
-                {like} Like
+                <FaHeart/>{like} Like
             </div>
             <div className="desc">
                 <p> <span>{e.user_id}</span> {e.desc} </p>

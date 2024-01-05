@@ -1,5 +1,5 @@
 // SCSS
-import './asset/scss/app.scss'
+import '../../asset/scss/app.scss';
 
 // 컴포넌트
 import Header from "./component/Header";
@@ -9,20 +9,21 @@ import Footer from "./component/Footer";
 import Link from "next/link";
 import { getServerSession } from 'next-auth';
 import { authOptions } from '../../pages/api/auth/[...nextauth]';
-import Write from '../../client/main/Write';
+import Navbar from '../../client/Navbar/Navbar';
 
 export const metadata = {
   title: '토이프로젝트 - SNS',
   description: '김지유의 토이프로젝트 SNS 사이트 입니다.',
 }
 
-
 export default async function RootLayout({ children }) {
 
   let session = await getServerSession(authOptions);
 
   return (
+
     <html lang="ko">
+      
       <body>
 
         <div className="_main">
@@ -35,14 +36,15 @@ export default async function RootLayout({ children }) {
             </div>
           </div>
 
-          {/* 작성버튼 */}
-          <Write session={session}/>
+          <Navbar session={session}/>
 
           <Footer/>
 
         </div>
 
       </body>
+
     </html>
+
   )
 }
