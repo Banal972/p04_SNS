@@ -3,6 +3,7 @@ import multer from "multer";
 import {createRouter} from "next-connect";
 import { connectDB } from "../../../utils/database";
 
+
 // 구글 스토리지
 const storage = new Storage({
     projectId : process.env.GCS_PROJECTID,
@@ -48,7 +49,7 @@ router
         const {content,filter} = req.body;
 
         post.insertOne({
-            user_id : "test",
+            user_id : session.user.name,
             like : 0,
             desc : content,
             imgURL : publicUrl,

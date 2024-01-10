@@ -1,17 +1,21 @@
 "use client"
+
 import axios from "axios";
 import gsap from "gsap";
 import moment from "moment/moment";
+
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaHeart } from "react-icons/fa";
 
-export default function Post({e,session}) {
+export default function Post({e,user}) {
 
+    // 라우터
     const router = useRouter();
 
     const [like,setLike] = useState(e.like);
 
+    // 좋아요 애니메이션
     const addHandler = ()=>{
 
         gsap.timeline({})
@@ -33,6 +37,7 @@ export default function Post({e,session}) {
 
     }
 
+    // 좋아요 기능
     const likeAdd = (e)=>{
 
         axios.post('/api/post/like',{
@@ -62,7 +67,7 @@ export default function Post({e,session}) {
         
         <div className="user">
             <div className="icon"></div>
-            {e.user_id}
+            {e.username}
         </div>
         
         <div className="img" style={
@@ -80,7 +85,7 @@ export default function Post({e,session}) {
                 <FaHeart/>{like} Like
             </div>
             <div className="desc">
-                <p> <span>{e.user_id}</span> {e.desc} </p>
+                <p> <span>{e.username}</span> {e.desc} </p>
                 <p className="date">{moment(e.write).format("YYYY-MM-DD")}</p>
             </div>
         </div>

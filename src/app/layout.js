@@ -4,12 +4,12 @@ import '../../asset/scss/app.scss';
 // 컴포넌트
 import Header from "./component/Header";
 import Footer from "./component/Footer";
+import Navbar from '../../client/Navbar/Navbar';
 
 // 모듈
-import Link from "next/link";
 import { getServerSession } from 'next-auth';
 import { authOptions } from '../../pages/api/auth/[...nextauth]';
-import Navbar from '../../client/Navbar/Navbar';
+import Session from './Session';
 
 export const metadata = {
   title: '토이프로젝트 - SNS',
@@ -18,7 +18,7 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
 
-  let session = await getServerSession(authOptions);
+  // let session = await getServerSession(authOptions);
 
   return (
 
@@ -26,21 +26,24 @@ export default async function RootLayout({ children }) {
       
       <body>
 
-        <div className="_main">
+        {/* NextAuth SessionProvider 설치 */}
+        <Session> 
+          <div className="_main">
 
-          <Header/>
-          
-          <div className="layout">
-            <div className="overflow">
-              {children}
+            <Header/>
+
+            <div className="layout">
+              <div className="overflow">
+                {children}
+              </div>
             </div>
+
+            <Navbar/>
+            
+            <Footer/>
+
           </div>
-
-          <Navbar session={session}/>
-
-          <Footer/>
-
-        </div>
+        </Session>
 
       </body>
 

@@ -1,10 +1,17 @@
 .mypage {
     padding: 0 5%; box-sizing: border-box; font-size: 14px;
 
+    .change-btn {
+        margin-top: 25px;
+        button {
+            all: unset; color: #fff; width: 100%; background: #000; display: block; text-align: center; height: 35px; border-radius: 2.5px; font-size: 12px; cursor: pointer;
+        }
+    }
+
     .profile {
         display: flex;
         .lbx {
-            flex: 0 0 auto;
+            flex: 0 0 auto; display: flex; flex-direction: column; justify-content: space-between;
 
             .user-img {
                 border-radius: 1000px; background-repeat: no-repeat; background-position: center; background-size: cover; border: 1px solid #ddd; box-sizing: border-box;
@@ -19,7 +26,7 @@
             }
 
             .logout {
-                width: 100%; background: red; text-align: center;
+                width: 100%; background: red; text-align: center; margin-top: 7.5px;
             }
 
         }
@@ -58,7 +65,15 @@
     }
 
     .feed {
-        display: grid; border: 1px solid #ddd; margin-top: 15px;
+        display: grid; border-top: 1px solid #ddd; margin-top: 15px; grid-template-columns: repeat(3,1fr); padding-top: 25px;
+
+        .col {
+            background-position: top center; background-size: cover; background-repeat: no-repeat; background-color: #000;
+            &::after {
+                content: ''; display: block; padding-bottom: 100%;
+            }
+        }
+
     }
 
 }

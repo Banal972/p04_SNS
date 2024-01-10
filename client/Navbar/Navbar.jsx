@@ -9,7 +9,7 @@ import { signIn } from "next-auth/react";
 
 export default function Navbar({session}) {
 
-    const auth = (e)=>{
+    /* const auth = (e)=>{
         if(!session){
             e.preventDefault();
             alert('로그인을 해야합니다.');
@@ -18,24 +18,26 @@ export default function Navbar({session}) {
             return;
         }
     }
-
+ */
   return (
     <ul className="nav-bar">
+        
         <li>
             <Link href="/"><MdHome /></Link>
         </li>
+
         <li>
             <Link href="/"><IoMdSearch /></Link>
         </li>
 
         {/* 작성페이지 */}
         <li>
-            <Link href="/write" onClick={(e)=>auth(e)}><IoCreateOutline/></Link>
+            <Link href="/write"><IoCreateOutline/></Link>
         </li>
 
         {/* 마이페이지 */}
         <li>
-            <Link href="/mypage" onClick={(e)=>auth(e)}><LuUser2/></Link>
+            <Link href="/user/login" ><LuUser2/></Link>
         </li>
 
     </ul>

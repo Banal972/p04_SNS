@@ -3,28 +3,47 @@
     .agree {
         margin-top: 30px; font-size: 14px;
         .cont {
-            border: 1px solid #ddd; border-radius: 5px; padding: 10px 2.5%; box-sizing: border-box; word-break: keep-all;
+            border: 1px solid #ddd; border-radius: 5px; padding: 10px 2.5%; box-sizing: border-box; word-break: keep-all; line-height: 1.3;
         }
         label {
             margin-top: 15px; display: inline-block;
         }
-    }
 
-    .icon-input {
-        margin-top: 55px; font-size: 14px;
-        .img {
-            width: 50px; background: #000; border-radius: 1000px;
-            &::after {
-                content: ''; display: block; padding-bottom: 100%;
+        .agree_input {
+            display: inline-flex; align-items: center; cursor: pointer;
+            input {
+                display: none;
+            }
+            input:checked{
+                + .check {
+                    background: #000;
+                }
+            }
+            .check {
+                margin-right: 5px; width: 10px; height: 10px; border: 1px solid #000;
             }
         }
+
+    }
+
+    .user-icon-box {
+        display: block; margin-top: 50px;
         p {
-            margin-top: 5px;
+            font-size: 14px; margin-bottom: 10px;
+        }
+        .user-icon {
+            width: 70px; height: 70px; border-radius: 1000px; background: #fff; position: relative; display: block; background-size: cover; background-repeat: no-repeat; background-position: center; border: 1px solid #eee; box-sizing: border-box; cursor: pointer;
+        }
+        .icon {
+            position: absolute; bottom: 0; right: 0; z-index: 2; color: skyblue; font-size: 24px; transform: translate(25%,25%);
+        }
+        input {
+            display: none;
         }
     }
 
-    button {
-        padding: 0; margin: 30px auto 0; width: 150px; height: 30px; background: #000; color: #fff; border: 0; display: block; font-family: "Pretendard"; cursor: pointer;
+    .input-lay {
+        margin-top: 30px;
     }
 
 }

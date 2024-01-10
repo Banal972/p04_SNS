@@ -23,8 +23,12 @@ ul {
     list-style: none;
 }
 
-input {
+input,
+textarea {
     border: 1px solid #ddd; padding: 0 0.5em; box-sizing: border-box; outline: 0;
+}
+textarea {
+    padding: 0.5em;
 }
 
 img {
@@ -52,4 +56,3 @@ img {
 @import "./main/main.scss";
 @import "./Layout/Layout.scss";
 @import "./Write/Write.scss";
-@import "./Mypage/Mypage.scss";
