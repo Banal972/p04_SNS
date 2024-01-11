@@ -3,13 +3,20 @@
 import { Swiper, SwiperSlide } from "swiper/react"
 import 'swiper/css';
 import { useRef, useState } from "react";
-import axios from "axios";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react"
+
+import axios from "axios";
 
 export default function Write(){
 
+    // 라우터 연결
     const router = useRouter();
 
+    // 로그인 session 가져오기
+    const {data,status} = useSession();
+
+    // 핕터명 저장
     const filter = [
         '_1977','aden',
         'brannan','brooklyn',
@@ -55,6 +62,7 @@ export default function Write(){
         }
 
         const formData = new FormData();
+        formData.append("username",data.user.name);
         formData.append("content",content.value);
         formData.append("file",file);
         formData.append('filter',changeFilter);
@@ -72,6 +80,7 @@ export default function Write(){
             if(data.suc){
                 alert(data.msg);
                 router.push('/');
+                router.refresh();
             }
         })
     }

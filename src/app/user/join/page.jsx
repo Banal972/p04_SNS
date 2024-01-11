@@ -12,8 +12,10 @@ import { BiEdit } from "react-icons/bi";
 
 export default function page() {
 
+  // 라우터 연결
   const router = useRouter();
 
+  // 로그인 session 가져오기
   const {data,status} = useSession();
   
   // 이미지주소

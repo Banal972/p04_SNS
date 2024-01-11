@@ -71,11 +71,17 @@ export default function Post({e,user}) {
             {e.username}
         </div>
         
-        <div className="img" style={
-            e.imgURL ?
-            {backgroundImage:`url(${e.imgURL})`}
-            : {background : "#000"}
-        }>
+        <div 
+            className="imgbox"
+        >
+            <div 
+                className={`img ${e.filter}`}
+                style={
+                    e.imgURL ?
+                    {backgroundImage:`url(${e.imgURL})`}
+                    : {background : "#000"}
+                }>
+            </div>
             <div className="heart">
                 <FaHeart/>
             </div>
