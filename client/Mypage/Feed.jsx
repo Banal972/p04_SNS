@@ -3,7 +3,9 @@ export default function Feed({feed}) {
     <div className="feed">
         {
             feed.map((e,i)=>(
-                <div className="col" key={i} style={{backgroundImage : `url()`}}></div>
+                <div className='col' key={i}>
+                  <div className={`img ${e.filter}`} style={{backgroundImage : `url(${e.imgURL})`}}></div>
+                </div>
             ))
         }
     </div>
