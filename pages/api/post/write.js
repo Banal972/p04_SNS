@@ -40,7 +40,7 @@ router
     const blobStream = blob.createWriteStream();
 
     blobStream.on('error',err=>{
-        console.error(err);
+        console.log(err);
     });
 
     blobStream.on('finish',()=>{

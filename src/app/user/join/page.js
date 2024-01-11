@@ -20,7 +20,7 @@ export default function page() {
   const [imgURL,setImgURL] = useState('');
 
   // 이미지 첨부 데이터
-  const [profile,setProfile] = useState(null);
+  const [imgFile,setImgFile] = useState(null);
 
   // status가 수정되면 데이터 수정
   useEffect(()=>{
@@ -38,7 +38,7 @@ export default function page() {
 
     const url = URL.createObjectURL(file);
 
-    setProfile(file);
+    setImgFile(file);
     setImgURL(url);
 
   }
@@ -52,7 +52,6 @@ export default function page() {
     const chk = e.target.chk;
     const username = e.target.username;
     const content = e.target.content;
-    let imgurl;
 
     if(!chk.checked){
       return alert('동의 하기를 눌러주세요.');
@@ -63,17 +62,20 @@ export default function page() {
       return username.focus();
     }
 
+    // formData 전송
+    const formData = new FormData();
+    formData.append('snsname', data.user.name);
+    formData.append('snsEmail', data.user.email);
+    formData.append('profileImage', data.user.image);
 
-    if(profile == null){
-      imgurl = data.user.image
-    }
+    formData.append('username', username.value);
+    formData.append('content', content.value);
+    formData.append('file', imgFile);
 
-    axios.post('/api/user/join',{
-      snsname : data.user.name,
-      snsEmail : data.user.email,
-      username : username.value,
-      content : content.value,
-      profileImage : imgurl
+    axios.post('/api/user/join',formData,{
+      headers : {
+        "Content-Type" : "multipart/form-data"
+      }
     })
     .then(({data})=>{
       const {suc,msg,type} = data;
@@ -105,7 +107,7 @@ export default function page() {
 
   if(status == "loading"){
 
-    return <p>로딩중...</p>
+    return <img src="/images/loding.svg" alt="" />
 
   }
 
