@@ -1,6 +1,6 @@
 /* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ Header ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
 .header {
-    height: 55px; background: #fff; color: #000; padding: 0 2.5%; display: flex; align-items: center; justify-content: center; font-size: 12px; flex: 0 0 auto;
+    height: 55px; background: #fff; color: #000; padding: 0 2.5%; display: flex; align-items: center; justify-content: center; font-size: 12px; flex: 0 0 auto; border-bottom: 1px solid #eee;
 
     .logo {
         a {
@@ -64,14 +64,9 @@
 
     .p {
         margin-top: em(10,14);
-
         span {
             display: inline-flex; align-items: center; vertical-align: middle; color: slateblue;
-            svg {
-                margin-right: 5px;
-            }
         }
-
     }
 
     .copy {

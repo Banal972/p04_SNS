@@ -2,13 +2,11 @@
 import '../../asset/scss/app.scss';
 
 // 컴포넌트
-import Header from "./component/Header";
-import Footer from "./component/Footer";
+import Header from "../../component/Header";
+import Footer from "../../component/Footer";
 import Navbar from '../../client/Navbar/Navbar';
 
 // 모듈
-import { getServerSession } from 'next-auth';
-import { authOptions } from '../../pages/api/auth/[...nextauth]';
 import Session from './Session';
 
 export const metadata = {
@@ -29,6 +27,7 @@ export default async function RootLayout({ children }) {
         {/* NextAuth SessionProvider 설치 */}
         <Session> 
           <div className="_main">
+
 
             <Header/>
 

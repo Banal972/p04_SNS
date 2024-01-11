@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import { authOptions } from '../../../pages/api/auth/[...nextauth]';
+import { authOptions } from '../pages/api/auth/[...nextauth]';
 import { getServerSession } from 'next-auth';
-import Login from '../../../client/header/Login';
-import Right from '../../../client/header/Right';
+import Login from '../client/header/Login';
+import Right from '../client/header/Right';
 
 export default async function Header() {
 

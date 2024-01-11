@@ -13,7 +13,7 @@ export default function Footer() {
           이 사이트는 Banal(김지유) <span> <AiFillGithub /><a href="https://github.com/Banal972" target='_blank'>https://github.com/Banal972</a> </span> 포트폴리오 사이트 입니다.
         </p>
 
-        <p className='copy'>Copyright 2023.Banal(김지유). All rights reserved.</p>
+        <p className='copy'>Copyright 2024.Banal(김지유). All rights reserved.</p>
 
       </div>
     </footer>

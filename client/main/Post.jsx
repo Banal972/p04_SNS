@@ -66,7 +66,8 @@ export default function Post({e,user}) {
     }}>
         
         <div className="user">
-            <div className="icon"></div>
+            {/* 가져온 프로필 사진 출력 */}
+            <div className="icon" style={{backgroundImage : `url(${e.profileImage})`}}></div>
             {e.username}
         </div>
         
