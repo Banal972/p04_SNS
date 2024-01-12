@@ -72,7 +72,7 @@ export default function Post({e,user}) {
 
     // 해당 유저로 이동
     const userClickHandler = (username)=>{
-        router.push(`/user/${username}`);
+        router.push(`/user/mypage/${username}`);
     }
 
   return (

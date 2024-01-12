@@ -7,8 +7,10 @@ import { redirect } from "next/navigation";
 
 export default async function layout({children}) {
 
+    // 세션가져오기
     let session = await getServerSession(authOptions);
 
+    // 세션이 없으면 리다이렉트
     if(!session){
         redirect('/user/login');
     }

@@ -1,8 +1,15 @@
 import { MongoClient } from 'mongodb'
+
+// DB URL
 const url = process.env.DB_URL;
-const options = { useNewUrlParser: true }
+// DB 옵션
+const options = {  }
+// useNewUrlParser: true
+
+// DB 커넥트
 let connectDB
 
+// mongodb의 
 if (process.env.NODE_ENV === 'development') {
   if (!global._mongo) {
     global._mongo = new MongoClient(url, options).connect()

@@ -132,32 +132,35 @@ export default function Write(){
 
                 {
                     img &&
-                    <Swiper 
-                        className="slide"
-                        slidesPerView={3.5}
-                        spaceBetween={10}
-                    >
-                        <SwiperSlide>
-                            <div className='imgbox' onClick={()=>filterHandler("")}>
-                                <div 
-                                    className={`img`} 
-                                    style={{backgroundImage : `url(${img})`}}
-                                ></div>
-                            </div>
-                        </SwiperSlide>
-                        {
-                            filter.map((e,i)=>(
-                                <SwiperSlide key={i}>
-                                    <div className='imgbox' onClick={()=>filterHandler(e)}>
-                                        <div 
-                                            className={`img ${e}`} 
-                                            style={{backgroundImage : `url(${img})`}}
-                                        ></div>
-                                    </div>
-                                </SwiperSlide>
-                            ))
-                        }
-                    </Swiper>
+                    <div className="filter">
+                        <p>필터 선택</p>
+                        <Swiper 
+                            className="slide"
+                            slidesPerView={3.5}
+                            spaceBetween={10}
+                        >
+                            <SwiperSlide>
+                                <div className='imgbox' onClick={()=>filterHandler("")}>
+                                    <div 
+                                        className={`img`} 
+                                        style={{backgroundImage : `url(${img})`}}
+                                    ></div>
+                                </div>
+                            </SwiperSlide>
+                            {
+                                filter.map((e,i)=>(
+                                    <SwiperSlide key={i}>
+                                        <div className='imgbox' onClick={()=>filterHandler(e)}>
+                                            <div 
+                                                className={`img ${e}`} 
+                                                style={{backgroundImage : `url(${img})`}}
+                                            ></div>
+                                        </div>
+                                    </SwiperSlide>
+                                ))
+                            }
+                        </Swiper>
+                    </div>
                 }
 
                 <div className="text">

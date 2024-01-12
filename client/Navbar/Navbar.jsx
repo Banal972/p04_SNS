@@ -27,7 +27,7 @@ export default function Navbar({session}) {
         </li>
 
         <li>
-            <Link href="/"><IoMdSearch /></Link>
+            <Link href="/search"><IoMdSearch /></Link>
         </li>
 
         {/* 작성페이지 */}

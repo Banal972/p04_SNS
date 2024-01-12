@@ -30,19 +30,27 @@
         
     }
 
-    .slide {
+    .filter {
         margin-top: 25px;
 
-        .imgbox {
-            cursor: pointer; position: relative;
-            &::after {
-                content: ''; display: block; padding-bottom: 100%;
-            }
+        p {
+            font-size: 14px; font-weight: 500; margin-bottom: 5px;
+        }
 
-            .img {
-                position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-repeat: no-repeat; background-position: top; background-size: cover;
+        .slide {
+    
+            .imgbox {
+                cursor: pointer; position: relative;
+                &::after {
+                    content: ''; display: block; padding-bottom: 100%;
+                }
+    
+                .img {
+                    position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-repeat: no-repeat; background-position: top; background-size: cover;
+                }
+    
             }
-
+    
         }
 
     }
@@ -51,11 +59,11 @@
         margin-top: 35px;
 
         p {
-            font-weight: 500; font-size: 14px;
+            font-weight: 500; font-size: 14px;  margin-bottom: 5px;
         }
 
         textarea {
-            width: 100%; resize: none; border: 1px solid #ddd; margin-top: 10px; box-sizing: border-box; outline: 0; padding: 0.5em; height: 150px; 
+            width: 100%; resize: none; border: 1px solid #ddd; box-sizing: border-box; outline: 0; padding: 0.5em; height: 150px; 
         }
         
     }

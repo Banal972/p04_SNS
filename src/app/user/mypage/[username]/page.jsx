@@ -1,6 +1,6 @@
 // DB
-import Feed from "../../../../client/Mypage/Feed";
-import { connectDB } from "../../../../utils/database";
+import Feed from "../../../../../client/Mypage/Feed";
+import { connectDB } from "../../../../../utils/database";
 
 export default async function page(props) {
 
