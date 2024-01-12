@@ -1,11 +1,16 @@
 "use client"
 
+// swiper
 import { Swiper, SwiperSlide } from "swiper/react"
 import 'swiper/css';
-import { useRef, useState } from "react";
+// react 모듈
+import { useEffect, useRef, useState } from "react";
+// 라우터
 import { useRouter } from "next/navigation";
+// 클라이언트용 auth
 import { useSession } from "next-auth/react"
 
+// ajax 라이브러리
 import axios from "axios";
 
 export default function Write(){
@@ -46,6 +51,7 @@ export default function Write(){
         setChangeFilter(e);
     }
 
+    // submit 이벤트
     const onSubmit = (e)=>{
         e.preventDefault();
 

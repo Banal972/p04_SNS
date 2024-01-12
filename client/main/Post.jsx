@@ -1,11 +1,21 @@
 "use client"
 
+// ajax 라이브러리
 import axios from "axios";
+
+// 애니메이션 라이브러리
 import gsap from "gsap";
+
+// 날짜 라이브러리
 import moment from "moment/moment";
 
+// next 라이브러리
 import { useRouter } from "next/navigation";
+
+// react 라이브러리
 import { useState } from "react";
+
+// icon 라이브러리
 import { FaHeart } from "react-icons/fa";
 
 export default function Post({e,user}) {
@@ -13,41 +23,42 @@ export default function Post({e,user}) {
     // 라우터
     const router = useRouter();
 
+    // 해당 좋아요수 가져오기
     const [like,setLike] = useState(e.like);
 
     // 좋아요 애니메이션
-    const addHandler = ()=>{
+    const addHandler = (target)=>{ // 클릭한 타겟
 
         gsap.timeline({})
-        .fromTo('.heart svg',{
+        .fromTo(target.querySelector('.heart svg'),{
             y : 50,
             opacity : 0
         },{
             y : 0,
             opacity : 1
         })
-        .fromTo('.heart svg',{
+        .fromTo(target.querySelector('.heart svg'),{
             scale : 0.9
         },{
             scale : 1.2
         },">-=50%")
-        .to('.heart svg',{
+        .to(target.querySelector('.heart svg'),{
             opacity : 0
         })
 
     }
 
     // 좋아요 기능
-    const likeAdd = (e)=>{
+    const likeAdd = (target,e)=>{ // 클릭한 타겟, 이벤트
 
         axios.post('/api/post/like',{
             _id : e._id,
-            user : session.name
+            user : user.name
         }).then(({data})=>{
             if(data.suc){
 
                 if(data.type == "insert"){
-                    addHandler();
+                    addHandler(target); // 클릭한 타겟
                 }
 
                 setLike(data.like); // 좋아요 바꾸기
@@ -58,21 +69,33 @@ export default function Post({e,user}) {
 
     }
 
+
+    // 해당 유저로 이동
+    const userClickHandler = (username)=>{
+        router.push(`/user/${username}`);
+    }
+
   return (
-    <li onDoubleClick={()=>{
-        if(session){
-            likeAdd(e)
-        }
-    }}>
+    <li>
         
-        <div className="user">
+        <div className="user" onClick={()=>userClickHandler(e.username)}>
+            
             {/* 가져온 프로필 사진 출력 */}
             <div className="icon" style={{backgroundImage : `url(${e.profileImage})`}}></div>
             {e.username}
+
         </div>
         
         <div 
             className="imgbox"
+            onDoubleClick={(dom)=>{
+
+                // 로그인이 되어있으면
+                if(user){
+                    likeAdd(dom.currentTarget,e)
+                }
+        
+            }}
         >
             <div 
                 className={`img ${e.filter}`}
